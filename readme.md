@@ -1,7 +1,7 @@
 ## Populate each pointer to point to its next right node.
 Given a binary tree
 
-``javascript function Node(val, left, right, next) {
+``` function Node(val, left, right, next) {
   this.val = val;
   this.left = left;
   this.right = right;
