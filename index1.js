@@ -10,35 +10,36 @@ let connect = function(root) {
   queue.push(root);
   bfs();
 
-  function bfs(){
-    let tempQueue = [];
-    let prevNode = null;
-    while(queue.length > 0){
-      let current = queue.shift();
-      if(current.left){
-        tempQueue.push(current.left);
-        console.log('what is current.left', current.left);
-        if(prevNode){
-          prevNode.next = current.left;
-          // console.log('prevNode ===', prevNode);
+  function bfs() {
+
+    if (queue.length > 0) {
+      let tempQueue = [];
+      let prevNode = null;
+
+      while (queue.length > 0) {
+        let current = queue.shift();
+        if (current.left) {
+          tempQueue.push(current.left);
+          if (prevNode) {
+            prevNode.next = current.left;
+          }
+          prevNode = current.left;
         }
-        prevNode = current.left;
+
+        if (current.right) {
+          tempQueue.push(current.right);
+          if (prevNode) {
+            prevNode.next = current.right;
+          }
+          prevNode = current.right;
+        }
       }
 
-      if(current.right){
-        tempQueue.push(current.right);
-        if(prevNode){
-          prevNode.next = current.right;
-          // console.log('prevNode ===', prevNode);
-        }
-        prevNode = current.right;
-      }
+      queue = tempQueue;
+      bfs();
     }
-    // console.log('wat is tempQueue', tempQueue);
-    queue = tempQueue;
-    bfs();
-    return root;
   }
+  return root;
 };
 
 //test case

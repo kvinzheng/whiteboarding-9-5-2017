@@ -40,7 +40,7 @@ function connectSiblings(root) {
         node: current.right
       });
     }
-
+    
   }
   return current;
 }
