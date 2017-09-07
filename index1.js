@@ -11,7 +11,6 @@ let connect = function(root) {
   bfs();
 
   function bfs() {
-
     if (queue.length > 0) {
       let tempQueue = [];
       let prevNode = null;
@@ -34,7 +33,6 @@ let connect = function(root) {
           prevNode = current.right;
         }
       }
-
       queue = tempQueue;
       bfs();
     }

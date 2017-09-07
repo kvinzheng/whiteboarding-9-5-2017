@@ -9,40 +9,35 @@ function BST(node) {
   this.root = node;
 }
 
-function connectSiblings(root) {
+function connectSiblings(tree) {
   let queue = [];
   let level = 0;
-  let current = root;
-  queue.push({
-    level: 1,
-    node: current
-  });
+  queue.push({ level: 0, node: tree.root });
 
   while (queue.length) {
-    current = queue.shift();
-    console.log('crrent.level==', current.level);
-    console.log('queuelevel==', queue);
-    if(queue[0]){
+    let current = queue.shift();
+    if(queue.length){
+      console.log('what is current.level', current.level);
+      console.log('what is queue[0].level', queue[0].level);
       if (current.level === queue[0].level) {
-        current.sibling = queue[0];
+        current.node.sibling = queue[0];
       }
     }
 
-    if (current.left) {
+    if (current.node.left) {
       queue.push({
         level: current.level + 1,
-        node: current.left
+        node: current.node.left
       });
     }
-    if (current.right) {
+    if (current.node.right) {
       queue.push({
         level: current.level + 1,
-        node: current.right
+        node: current.node.right
       });
     }
-    
   }
-  return current;
+  return tree;
 }
 
 let lvl2d = new Node(7, null, null, null);
